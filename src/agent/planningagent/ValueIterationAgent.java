@@ -36,7 +36,6 @@ public class ValueIterationAgent extends PlanningValueAgent{
 	/**
 	 * 
 	 * @param gamma
-	 * @param nbIterations
 	 * @param mdp
 	 */
 	public ValueIterationAgent(double gamma,  MDP mdp) {
@@ -71,6 +70,23 @@ public class ValueIterationAgent extends PlanningValueAgent{
 		//delta < epsilon 
 		this.delta=0.0;
 		//*** VOTRE CODE
+		for (Map.Entry<Etat,Double> etat:this.V.entrySet()){
+			List<Action> actionsPossibles = this.mdp.getActionsPossibles(etat.getKey());
+			double max = 0;
+			for(Action action:actionsPossibles){
+				double somme = 0;
+				try{
+					for(Map.Entry<Etat,Double> ateignable : this.mdp.getEtatTransitionProba(etat.getKey(),action).entrySet()){
+						somme += ateignable.getValue() * (this.mdp.getRecompense(etat.getKey(),action,ateignable.getKey())+this.getGamma()*this.V.get(ateignable.getKey()));
+					}
+				}catch (Exception e){
+					System.out.println(e.getMessage());
+				}
+
+				max = somme>max?somme:max;
+			}
+			etat.setValue(max);
+		}
 		
 		
 		// mise a jour vmax et vmin pour affichage du gradient de couleur:
