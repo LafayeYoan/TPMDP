@@ -71,8 +71,11 @@ public class ValueIterationAgent extends PlanningValueAgent{
 		this.delta=0.0;
 		//*** VOTRE CODE
 		for (Map.Entry<Etat,Double> etat:this.V.entrySet()){
+			if(this.mdp.estAbsorbant(etat.getKey())){
+				continue;
+			}
 			List<Action> actionsPossibles = this.mdp.getActionsPossibles(etat.getKey());
-			double max = 0;
+			double max = -Double.MAX_VALUE;
 			for(Action action:actionsPossibles){
 				double somme = getSommeRecompenseTransition(etat.getKey(), action);
 
@@ -136,7 +139,7 @@ public class ValueIterationAgent extends PlanningValueAgent{
 		List<Action> returnactions = new ArrayList<Action>();
 		List<Action> actionsPossibles = this.mdp.getActionsPossibles(_e);
 
-		double max = 0;
+		double max = -Double.MAX_VALUE;
 		for(Action action: actionsPossibles){
 			double somme = getSommeRecompenseTransition(_e,action);
 			if(max<somme){
