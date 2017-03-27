@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a1cec09-e3ec-4007-af43-4589ce87724e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPMDP/agent/planningagent/ValueIterationAgent.class" afterPath="$PROJECT_DIR$/out/production/TPMDP/agent/planningagent/ValueIterationAgent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/agent/planningagent/ValueIterationAgent.java" afterPath="$PROJECT_DIR$/src/agent/planningagent/ValueIterationAgent.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,20 +25,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ValueIterationAgent.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ValueIterationAgent.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/agent/planningagent/ValueIterationAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-130">
-              <caret line="141" column="38" lean-forward="false" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
+            <state relative-caret-position="210">
+              <caret line="91" column="52" lean-forward="false" selection-start-line="91" selection-start-column="51" selection-end-line="91" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testValueIterationBridge.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="testValueIterationBridge.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simu/simuTP1/testValueIterationBridge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
+            <state relative-caret-position="588">
               <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
@@ -171,6 +169,10 @@
               <option name="myItemId" value="simu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simuTP2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -187,6 +189,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="simuTP1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TPMDP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TPMDP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -217,7 +233,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.testValueIterationBridge">
+  <component name="RunManager" selected="Application.testValueIterationDiscountGrid">
     <configuration default="false" name="testMoveGridworld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -286,6 +302,26 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="simuTP1.testValueIterationBridge" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="TPMDP" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="testValueIterationDiscountGrid" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="simuTP1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="simuTP1.testValueIterationDiscountGrid" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -678,18 +714,20 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.testMoveGridworld" />
       <item index="1" class="java.lang.String" itemvalue="Application.testRandomAgent" />
       <item index="2" class="java.lang.String" itemvalue="Application.testValueIterCours" />
       <item index="3" class="java.lang.String" itemvalue="Application.testValueIterationBridge" />
+      <item index="4" class="java.lang.String" itemvalue="Application.testValueIterationDiscountGrid" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.testValueIterationBridge" />
-        <item index="1" class="java.lang.String" itemvalue="Application.testValueIterCours" />
-        <item index="2" class="java.lang.String" itemvalue="Application.testRandomAgent" />
-        <item index="3" class="java.lang.String" itemvalue="Application.testMoveGridworld" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.testValueIterationDiscountGrid" />
+        <item index="1" class="java.lang.String" itemvalue="Application.testValueIterationBridge" />
+        <item index="2" class="java.lang.String" itemvalue="Application.testValueIterCours" />
+        <item index="3" class="java.lang.String" itemvalue="Application.testRandomAgent" />
+        <item index="4" class="java.lang.String" itemvalue="Application.testMoveGridworld" />
       </list>
     </recent_temporary>
   </component>
@@ -703,12 +741,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1490616104452</updated>
-      <workItem from="1490616106846" duration="7477000" />
+      <workItem from="1490616106846" duration="10002000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7477000" />
+    <option name="totallyTimeSpent" value="10002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
@@ -723,7 +761,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5021552" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298969" sideWeight="0.49784482" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.49784482" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -787,7 +825,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/agent/planningagent/ValueIterationAgent.java</url>
-          <line>141</line>
+          <line>152</line>
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
@@ -809,18 +847,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agent/planningagent/ValueIterationAgent.java">
+    <entry file="file://$PROJECT_DIR$/simu/simuTP1/testValueIterationBridge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-130">
-          <caret line="141" column="38" lean-forward="false" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
+        <state relative-caret-position="588">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simu/simuTP1/testValueIterationBridge.java">
+    <entry file="file://$PROJECT_DIR$/src/agent/planningagent/ValueIterationAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="210">
+          <caret line="91" column="52" lean-forward="false" selection-start-line="91" selection-start-column="51" selection-end-line="91" selection-end-column="52" />
           <folding />
         </state>
       </provider>

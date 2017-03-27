@@ -65,21 +65,25 @@ public class ValueIterationAgent extends PlanningValueAgent{
 	 */
 	@Override
 	public void updateV(){
+		double vMax = -Double.MAX_VALUE, vMin = Double.MAX_VALUE;
 		//delta est utilise pour detecter la convergence de l'algorithme
 		//lorsque l'on planifie jusqu'a convergence, on arrete les iterations lorsque
 		//delta < epsilon 
 		this.delta=0.0;
-		//*** VOTRE CODE
+		//Pour chaque état, on set le max des actions disponibles.
 		for (Map.Entry<Etat,Double> etat:this.V.entrySet()){
-			if(this.mdp.estAbsorbant(etat.getKey())){
+			if(this.mdp.estAbsorbant(etat.getKey())){ // sort de la comparaisont les etats absorbants
 				continue;
 			}
 			List<Action> actionsPossibles = this.mdp.getActionsPossibles(etat.getKey());
-			double max = -Double.MAX_VALUE;
+			double max = -Double.MAX_VALUE; //Le max pouvant etre négatif, on l'initialise au minimum possible
+
 			for(Action action:actionsPossibles){
 				double somme = getSommeRecompenseTransition(etat.getKey(), action);
 
 				max = somme>max?somme:max;
+				vMax = somme>vMax?somme:vMax;
+				vMin = somme<vMin?somme:vMin;
 			}
 			etat.setValue(max);
 		}
@@ -89,11 +93,18 @@ public class ValueIterationAgent extends PlanningValueAgent{
 		//vmax est la valeur  max de V  pour tout s
 		//vmin est la valeur min de V  pour tout s
 		// ...
-		
+		this.vmax = vMax;
+		this.vmin = vMin;
 		//******************* laisser la notification a la fin de la methode	
 		this.notifyObs();
 	}
 
+	/**
+	 * Calcul de la somme des recompense / transaction pour un état et une action donnée
+	 * @param etat Etat d'entrée
+	 * @param action Action a effectuer
+	 * @return Somme
+	 */
 	private double getSommeRecompenseTransition(Etat etat, Action action) {
 		double somme = 0;
 		try{
@@ -139,7 +150,7 @@ public class ValueIterationAgent extends PlanningValueAgent{
 		List<Action> returnactions = new ArrayList<Action>();
 		List<Action> actionsPossibles = this.mdp.getActionsPossibles(_e);
 
-		double max = -Double.MAX_VALUE;
+		double max = -Double.MAX_VALUE; //Le max ateignable est paramettré sur le minimum possible car la somme des recompense/transaction peut etre négative
 		for(Action action: actionsPossibles){
 			double somme = getSommeRecompenseTransition(_e,action);
 			if(max<somme){
