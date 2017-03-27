@@ -74,14 +74,7 @@ public class ValueIterationAgent extends PlanningValueAgent{
 			List<Action> actionsPossibles = this.mdp.getActionsPossibles(etat.getKey());
 			double max = 0;
 			for(Action action:actionsPossibles){
-				double somme = 0;
-				try{
-					for(Map.Entry<Etat,Double> ateignable : this.mdp.getEtatTransitionProba(etat.getKey(),action).entrySet()){
-						somme += ateignable.getValue() * (this.mdp.getRecompense(etat.getKey(),action,ateignable.getKey())+this.getGamma()*this.V.get(ateignable.getKey()));
-					}
-				}catch (Exception e){
-					System.out.println(e.getMessage());
-				}
+				double somme = getSommeRecompenseTransition(etat.getKey(), action);
 
 				max = somme>max?somme:max;
 			}
@@ -97,8 +90,20 @@ public class ValueIterationAgent extends PlanningValueAgent{
 		//******************* laisser la notification a la fin de la methode	
 		this.notifyObs();
 	}
-	
-	
+
+	private double getSommeRecompenseTransition(Etat etat, Action action) {
+		double somme = 0;
+		try{
+            for(Map.Entry<Etat,Double> ateignable : this.mdp.getEtatTransitionProba(etat,action).entrySet()){
+                somme += ateignable.getValue() * (this.mdp.getRecompense(etat,action,ateignable.getKey())+this.getGamma()*this.V.get(ateignable.getKey()));
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+		return somme;
+	}
+
+
 	/**
 	 * renvoi l'action executee par l'agent dans l'etat e 
 	 * Si aucune actions possibles, renvoi Action2D.NONE
@@ -129,7 +134,20 @@ public class ValueIterationAgent extends PlanningValueAgent{
 		// retourne action de meilleure valeur dans _e selon V, 
 		// retourne liste vide si aucune action legale (etat absorbant)
 		List<Action> returnactions = new ArrayList<Action>();
-	
+		List<Action> actionsPossibles = this.mdp.getActionsPossibles(_e);
+
+		double max = 0;
+		for(Action action: actionsPossibles){
+			double somme = getSommeRecompenseTransition(_e,action);
+			if(max<somme){
+				returnactions.clear();
+				returnactions.add(action);
+				max = somme;
+			}
+			if(max == somme){
+				returnactions.add(action);
+			}
+		}
 		return returnactions;
 		
 	}
