@@ -28,7 +28,7 @@ import agent.strategy.StrategyExplorationTest1;
 
 public class testRLPacman extends Application{
 	/** type de labyrinthe pour le jeu de pacman*/
-	static String mazename = "pacmanlayouts/mediumGrid.lay";//smallGrid smallGrid2 mediumGrid
+	static String mazename = "pacmanlayouts/smallGrid2.lay";//smallGrid smallGrid2 mediumGrid
 
 	// parametres RL*/
 	static double gamma=0.8;
@@ -37,7 +37,7 @@ public class testRLPacman extends Application{
 	
 	// parametres experience a lancer, un episode = une partie */
 	/** nombre d'experiences a lancer (pour faire une moyenne), une experience est un apprentissage sur plusieurs parties */
-	static int nbmean =3;
+	static int nbmean =1;
 	/** nombre de parties ou l'agent apprend */
 	static int nbepisodelearn = 5000;
 	/** nombre de partie ou l'agent exploite la politique apprise (epsilon=0) */
