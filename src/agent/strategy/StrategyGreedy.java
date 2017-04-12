@@ -1,5 +1,6 @@
 package agent.strategy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -34,8 +35,17 @@ public class StrategyGreedy extends StrategyExploration{
 		}
 	
 		//VOTRE CODE ICI
-		
-		return null;
+		List<Action> politique = this.getAgent().getPolitique(_e);
+		if(politique.size()!=0){
+			Action best  = politique.get(rand.nextInt(politique.size()));
+			if(this.getEpsilon()>d){
+				return best; // return une action aléatoire pamis les meilleures
+			}
+		}
+
+
+		return this.getAgent().getActionsLegales(_e).get(rand.nextInt(this.getAgent().getActionsLegales(_e).size()));
+
 	}
 
 	public double getEpsilon() {
