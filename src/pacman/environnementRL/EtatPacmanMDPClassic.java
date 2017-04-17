@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import pacman.elements.ActionPacman;
 import pacman.elements.StateAgentPacman;
 import pacman.elements.StateGamePacman;
 import environnement.Etat;
@@ -25,18 +26,16 @@ public class EtatPacmanMDPClassic implements Etat , Cloneable{
 			stringToHash += "_"+ _stategamepacman.getPacmanState(i).getX();
 			stringToHash += "_"+_stategamepacman.getPacmanState(i).getY();
 			stringToHash += "_"+_stategamepacman.getClosestDot(_stategamepacman.getPacmanState(i));
-			stringToHash += "_"+_stategamepacman.getPacmanState(i).getDirection();
-			stringToHash += "_"+_stategamepacman.getPacmanState(i).getLastMovement();
 		}
 
 		for (int i  =0 ; i < _stategamepacman.getNumberOfGhosts();i++){
 			stringToHash += "_"+_stategamepacman.getGhostState(i).getX();
 			stringToHash += "_"+_stategamepacman.getGhostState(i).getY();
-			stringToHash += "_"+_stategamepacman.getGhostState(i).getDirection();
-			stringToHash += "_"+_stategamepacman.getGhostState(i).getLastMovement();
 		}
 
-		stringToHash+="_"+_stategamepacman.getFoodEaten();
+		stringToHash += "_"
+				+ _stategamepacman.getFoodEaten()
+				+ _stategamepacman.getCapsulesEaten();
 	}
 	
 	@Override
