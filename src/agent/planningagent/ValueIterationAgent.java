@@ -143,7 +143,6 @@ public class ValueIterationAgent extends PlanningValueAgent{
 	 */
 	@Override
 	public List<Action> getPolitique(Etat _e) {
-		//*** VOTRE CODE
 		
 		// retourne action de meilleure valeur dans _e selon V, 
 		// retourne liste vide si aucune action legale (etat absorbant)

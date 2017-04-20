@@ -1,52 +1,46 @@
 package pacman.environnementRL;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import pacman.elements.ActionPacman;
-import pacman.elements.StateAgentPacman;
 import pacman.elements.StateGamePacman;
 import environnement.Etat;
+
 /**
  * Classe pour définir un etat du MDP pour l'environnement pacman avec QLearning tabulaire
 
  */
 public class EtatPacmanMDPClassic implements Etat , Cloneable{
 
-	private String stringToHash;
-
+	private int pacmanX;
+	private int pacmanY;
+	private int ghostX;
+	private int ghostY;
 
 
 	public EtatPacmanMDPClassic(StateGamePacman _stategamepacman){
 
-		stringToHash += super.hashCode();
+		if(! _stategamepacman.getPacmanState(0).isDead()) {
+            pacmanX = _stategamepacman.getPacmanState(0).getX();
+            pacmanY = _stategamepacman.getPacmanState(0).getY();
+        } else {
+            pacmanX = -1;
+            pacmanY = -1;
+        }
 
-		for (int i  =0 ; i < _stategamepacman.getNumberOfPacmans();i++){
-			stringToHash += "_"+ _stategamepacman.getPacmanState(i).getX();
-			stringToHash += "_"+_stategamepacman.getPacmanState(i).getY();
-			stringToHash += "_"+_stategamepacman.getClosestDot(_stategamepacman.getPacmanState(i));
-		}
+		ghostX = _stategamepacman.getGhostState(0).getX();
+		ghostY = _stategamepacman.getGhostState(0).getY();
 
-		for (int i  =0 ; i < _stategamepacman.getNumberOfGhosts();i++){
-			stringToHash += "_"+_stategamepacman.getGhostState(i).getX();
-			stringToHash += "_"+_stategamepacman.getGhostState(i).getY();
-		}
-
-		stringToHash += "_"
-				+ _stategamepacman.getFoodEaten()
-				+ _stategamepacman.getCapsulesEaten();
 	}
 	
 	@Override
 	public String toString() {
-		
+
 		return "";
 	}
 
 	@Override
-	public int hashCode(){
-		return stringToHash.hashCode();
+	public int hashCode() {
+        int result = 31 * ghostX + ghostY;
+        result = 31 * result + pacmanX + pacmanY;
+        return result;
 	}
 
 	public Object clone() {
@@ -67,8 +61,24 @@ public class EtatPacmanMDPClassic implements Etat , Cloneable{
 		return clone;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
 
-
-	
-
+		EtatPacmanMDPClassic other = (EtatPacmanMDPClassic) obj;
+		if(this.pacmanX != other.pacmanX)
+			return false;
+		if(this.pacmanY != other.pacmanY)
+			return false;
+		if(this.ghostX != other.ghostX)
+			return false;
+		if(this.ghostY != other.ghostY)
+			return false;
+		return true;
+	}
 }

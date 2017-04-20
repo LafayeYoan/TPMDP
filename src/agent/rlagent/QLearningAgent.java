@@ -62,8 +62,6 @@ public class QLearningAgent extends RLAgent {
 
 		}
 
-		//*** VOTRE CODE
-
 		if(!this.qvaleurs.containsKey(e)){
 			return returnactions;
 		}
@@ -84,7 +82,6 @@ public class QLearningAgent extends RLAgent {
 	
 	@Override
 	public double getValeur(Etat e) {
-		//*** VOTRE CODE
 		if(!this.qvaleurs.containsKey(e)){
 			return 0.0;
 		}
@@ -94,7 +91,6 @@ public class QLearningAgent extends RLAgent {
 
 	@Override
 	public double getQValeur(Etat e, Action a) {
-		//*** VOTRE CODE
 		if(!this.qvaleurs.containsKey(e)){
 			return 0;
 		}
@@ -108,7 +104,6 @@ public class QLearningAgent extends RLAgent {
 	
 	@Override
 	public void setQValeur(Etat e, Action a, double d) {
-		//*** VOTRE CODE
 		if(!this.qvaleurs.containsKey(e)){
 			this.qvaleurs.put(e,new HashMap<>());
 		}
@@ -141,7 +136,6 @@ public class QLearningAgent extends RLAgent {
 		if (RLAgent.DISPRL)
 			System.out.println("QL mise a jour etat "+e+" action "+a+" etat' "+esuivant+ " r "+reward);
 
-		//*** VOTRE CODE
 		double newValue = (1-this.getAlpha())*this.getQValeur(e,a)+this.getAlpha()*(reward+this.gamma*(this.getValeur(esuivant)));
 
 		this.setQValeur(e,a,newValue);
@@ -157,7 +151,6 @@ public class QLearningAgent extends RLAgent {
 	@Override
 	public void reset() {
 		super.reset();
-		//*** VOTRE CODE
 		
 		this.episodeNb =0;
 		this.notifyObs();
