@@ -8,25 +8,41 @@ import environnement.Etat;
 
  */
 public class EtatPacmanMDPClassic implements Etat , Cloneable{
-
-	private int pacmanX;
-	private int pacmanY;
-	private int ghostX;
-	private int ghostY;
+    
+    private int[] pacmansY;
+    private int[] pacmansX;
+    private int[] ghostsY;
+    private int[] ghostsX;
 
 
 	public EtatPacmanMDPClassic(StateGamePacman _stategamepacman){
 
-		if(! _stategamepacman.getPacmanState(0).isDead()) {
-            pacmanX = _stategamepacman.getPacmanState(0).getX();
-            pacmanY = _stategamepacman.getPacmanState(0).getY();
-        } else {
-            pacmanX = -1;
-            pacmanY = -1;
+	    pacmansY = new int[_stategamepacman.getNumberOfPacmans()];
+	    pacmansX = new int[_stategamepacman.getNumberOfPacmans()];
+	    ghostsY = new int[_stategamepacman.getNumberOfGhosts()];
+	    ghostsX = new int[_stategamepacman.getNumberOfGhosts()];
+
+		for(int i = 0; i < pacmansY.length; i++) {
+
+            if(! _stategamepacman.getPacmanState(i).isDead()) {
+                pacmansX[i] = _stategamepacman.getPacmanState(i).getX();
+                pacmansY[i] = _stategamepacman.getPacmanState(i).getY();
+            } else {
+                pacmansX[i] = -1;
+                pacmansY[i] = -1;
+            }
         }
 
-		ghostX = _stategamepacman.getGhostState(0).getX();
-		ghostY = _stategamepacman.getGhostState(0).getY();
+        for(int j = 0; j < ghostsY.length; j++) {
+
+            if(! _stategamepacman.getGhostState(j).isDead()) {
+                ghostsX[j] = _stategamepacman.getGhostState(j).getX();
+                ghostsY[j] = _stategamepacman.getGhostState(j).getY();
+            } else {
+                ghostsX[j] = -1;
+                ghostsY[j] = -1;
+            }
+        }
 
 	}
 	
@@ -38,8 +54,15 @@ public class EtatPacmanMDPClassic implements Etat , Cloneable{
 
 	@Override
 	public int hashCode() {
-        int result = 31 * ghostX + ghostY;
-        result = 31 * result + pacmanX + pacmanY;
+	    int result = 31;
+
+        for(int l = 0; l < ghostsY.length; l++) {
+            result *= (ghostsY[l] + ghostsX[l]);
+        }
+
+	    for(int k = 0; k < pacmansY.length; k++) {
+	        result *= (pacmansY[k] + pacmansX[k]);
+        }
         return result;
 	}
 
@@ -71,14 +94,19 @@ public class EtatPacmanMDPClassic implements Etat , Cloneable{
 			return false;
 
 		EtatPacmanMDPClassic other = (EtatPacmanMDPClassic) obj;
-		if(this.pacmanX != other.pacmanX)
-			return false;
-		if(this.pacmanY != other.pacmanY)
-			return false;
-		if(this.ghostX != other.ghostX)
-			return false;
-		if(this.ghostY != other.ghostY)
-			return false;
+        for(int l = 0; l < ghostsY.length; l++) {
+            if(other.ghostsY[l] != this.ghostsY[l]
+                    || other.ghostsX[l] != this.ghostsX[l]) {
+                return false;
+            }
+        }
+
+        for(int k = 0; k < pacmansY.length; k++) {
+            if(other.pacmansY[k] != this.pacmansY[k]
+                    || other.pacmansX[k] != this.pacmansX[k]) {
+                return false;
+            }
+        }
 		return true;
 	}
 }
