@@ -18,22 +18,29 @@ import javafx.util.Pair;
  */
 public class FeatureFunctionIdentity implements FeatureFunction {
 	//*** VOTRE CODE
+	private double[] vecteur;
 	
 	public FeatureFunctionIdentity(int _nbEtat, int _nbAction){
 		//*** VOTRE CODE
+		vecteur = new double[_nbEtat * _nbAction];
 	}
 	
 	@Override
 	public int getFeatureNb() {
 		//*** VOTRE CODE
-		return 0;
+		return vecteur.length;
 	}
 
 	@Override
 	public double[] getFeatures(Etat e,Action a){
 		//*** VOTRE CODE
-		
-		return null;
+		for(int i = 0; i < getFeatureNb(); i++) {
+		    vecteur[i] = 0;
+        }
+
+        //Quel doit être la position du 1 ?
+        vecteur[e.hashCode() + a.hashCode()] = 1;
+		return vecteur;
 	}
 	
 

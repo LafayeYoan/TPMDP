@@ -38,9 +38,6 @@ public class QLearningAgent extends RLAgent {
 			Environnement _env) {
 		super(alpha, gamma,_env);
 		qvaleurs = new HashMap<Etat,HashMap<Action,Double>>();
-		
-		
-	
 	}
 
 

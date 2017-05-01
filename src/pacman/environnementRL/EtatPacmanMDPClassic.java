@@ -1,5 +1,6 @@
 package pacman.environnementRL;
 
+import pacman.elements.MazePacman;
 import pacman.elements.StateGamePacman;
 import environnement.Etat;
 
@@ -8,7 +9,9 @@ import environnement.Etat;
 
  */
 public class EtatPacmanMDPClassic implements Etat , Cloneable{
-    
+
+    private MazePacman maze;
+
     private int[] pacmansY;
     private int[] pacmansX;
     private int[] ghostsY;
@@ -16,6 +19,8 @@ public class EtatPacmanMDPClassic implements Etat , Cloneable{
 
 
 	public EtatPacmanMDPClassic(StateGamePacman _stategamepacman){
+
+	    maze = _stategamepacman.getMaze(); //q 2.3
 
 	    pacmansY = new int[_stategamepacman.getNumberOfPacmans()];
 	    pacmansX = new int[_stategamepacman.getNumberOfPacmans()];
@@ -108,5 +113,22 @@ public class EtatPacmanMDPClassic implements Etat , Cloneable{
             }
         }
 		return true;
+	}
+
+	/***
+	 * Retourne le nombre total d'etats (q 2.3)
+	 * @return
+	 */
+	private int getDimensions() {
+	    int nbEtats = 0;
+        for(int y=0;y<maze.getSizeY();y++)
+        {
+            for(int x=0;x<maze.getSizeX();x++)
+            {
+                nbEtats = maze.isWall(x, y) ? nbEtats : nbEtats + 1;
+
+            }
+        }
+        return nbEtats;
 	}
 }
